@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+
+class ProductController extends Controller
+{
+    public function index()
+    {
+        $data_toko = [
+            'nama_toko' => 'Toko Teh Nusantara',
+            'alamat_toko' => 'Bandung, Jawa Barat',
+            'status_toko' => 'Buka',
+        ];
+
+        $data_produk = Product::get();
+
+        return view('pages.product.show', [
+            'data_toko' => $data_toko,
+            'data_produk' => $data_produk,
+        ]);
+    }
+
+    public function addProduct()
+    {
+        return view('pages.product.addProduct');
+    }
+}
